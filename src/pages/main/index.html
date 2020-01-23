@@ -1,0 +1,43 @@
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="/common.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="/static/fonts/oswald.css" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <title>Главная</title>
+  </head>
+  <body>
+    @@include('header/index.html')
+    <main class="index-main">
+      <div class="container">
+        <h1 class="title-block title-block_one">Главная</h1>
+        <h2 class="title-block title-block_two">
+          Вы находитесь на главной странице
+        </h2>
+        <div class="parallax-card">
+          <div class="parallax-card__wrapper-img">
+            <img
+              class="parallax-card__img"
+              src="static/images/cactus.jpg"
+              alt="Картинка кактуса"
+            />
+          </div>
+
+          <div class="parallax-card__description">
+            <p class="parallax-card__paragraph">Кактус маминой подруги</p>
+            <p class="parallax-card__paragraph">
+              Не нужно поливать и никогда не сохнет
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    @@include('footer/index.html')
+  </body>
+  <script src="index.js"></script>
+</html>
