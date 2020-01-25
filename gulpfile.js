@@ -99,9 +99,9 @@ async function buildProject() {
   // Обработка стилей компонентов
   await scss("./src/components/common.scss", "./build");
   // Обработка картинок
-  await img("./src/static/images/*", "./build/static/images");
+  await img("./src/static/images/**/*", "./build/static/images");
   // Обработка шрифтов
-  await fonts("./src/static/fonts/*", "./build/static/fonts");
+  await fonts("./src/static/fonts/**/*", "./build/static/fonts");
 }
 
 // Функция которая слушает изменения файлов в проекте
