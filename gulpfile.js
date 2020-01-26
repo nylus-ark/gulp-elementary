@@ -33,7 +33,7 @@ async function html(src, dest) {
 async function scss(src, dest) {
   return await gulp
     .src(src)
-    .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(
       autoprefixer({
         cascade: false
