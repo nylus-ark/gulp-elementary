@@ -121,4 +121,4 @@ gulp.task("watch", watch);
 // Сборка проекта
 gulp.task("build", gulp.series(clean, buildProject));
 // Режим разработки
-gulp.task("dev", gulp.series("build", "watch"));
+gulp.task("start", gulp.series("build", "watch"));
