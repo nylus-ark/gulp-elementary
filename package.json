@@ -1,5 +1,10 @@
 {
-  "name": "gulp-for-many-sites",
+  "name": "gulp-elementary",
+  "version": "1.0.0",
+  "description": "Simple gulp application",
+  "main": "gulpfile.js",
+  "author": "ducker-dev <the.ivan.smirnov@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "browser-sync": "^2.26.5",
     "del": "^4.1.1",
@@ -14,11 +19,9 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "start": "./node_modules/gulp/bin/gulp.js dev",
+    "start": "./node_modules/gulp/bin/gulp.js start",
     "build": "./node_modules/gulp/bin/gulp.js build"
   },
-  "author": "ducker-dev <the.ivan.smirnov@gmail.com>",
-  "license": "MIT",
   "browserslist": [
     "defaults"
   ]
