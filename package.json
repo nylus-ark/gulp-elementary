@@ -19,8 +19,8 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "start": "./node_modules/gulp/bin/gulp.js start",
-    "build": "./node_modules/gulp/bin/gulp.js build"
+    "start": "node ./node_modules/gulp/bin/gulp.js start",
+    "build": "node ./node_modules/gulp/bin/gulp.js build"
   },
   "browserslist": [
     "defaults"
