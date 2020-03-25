@@ -24,6 +24,8 @@ async function html(src, dest) {
       fileinclude({
         prefix: "@@",
         basepath: path.join(__dirname, "src/components")
+      }).on('error', function(error) {
+        console.error(error); 
       })
     )
     .pipe(gulp.dest(dest))
