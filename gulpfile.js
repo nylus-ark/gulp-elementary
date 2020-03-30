@@ -2,6 +2,7 @@ let gulp = require("gulp"),
   sass = require("gulp-sass"),
   autoprefixer = require("gulp-autoprefixer"),
   cleanCSS = require("gulp-clean-css"),
+  babel = require("gulp-babel"),
   uglify = require("gulp-uglify"),
   del = require("del"),
   browserSync = require("browser-sync"),
@@ -13,7 +14,7 @@ sass.compiler = require("node-sass"); // Переназначаем компил
 
 // Функция для корректной работы с путями
 function pathJ(value) {
-  return path.join(__dirname, value)
+  return path.join(__dirname, value);
 }
 // Название папки с итоговым проектом
 const finalFolder = "dest";
@@ -55,6 +56,11 @@ function scss(src, dest) {
 function js(src, dest) {
   return gulp
     .src(src)
+    .pipe(
+      babel({
+        presets: ["@babel/env"]
+      })
+    )
     .pipe(
       uglify({ toplevel: true }).on("error", function() {
         this.emit("end");
