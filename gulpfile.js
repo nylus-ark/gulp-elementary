@@ -7,7 +7,7 @@ let gulp = require("gulp"),
   del = require("del"),
   browserSync = require("browser-sync"),
   fileinclude = require("gulp-file-include"),
-  fs = require("fs"),
+  fs = require("fs-extra"),
   path = require("path");
 
 sass.compiler = require("node-sass"); // Переназначаем компилирование
@@ -71,17 +71,13 @@ function js(src, dest) {
 }
 // Функция обработки шрифтов
 function fonts(src, dest) {
-  return gulp
-    .src(src)
-    .pipe(gulp.dest(dest))
-    .pipe(browserSync.reload({ stream: true }));
+  fs.copy(src, dest);
+  // TODO: нужно сделать оптимизацию шрифтов
 }
 // Функция обработки картинок
 function img(src, dest) {
-  return gulp
-    .src(src)
-    .pipe(gulp.dest(dest))
-    .pipe(browserSync.reload({ stream: true }));
+  fs.copy(src, dest);
+  // TODO: нужно сделать оптимизацию картинок
 }
 
 // Функция сборки проекта
@@ -118,9 +114,9 @@ async function buildProject() {
   // Обработка стилей компонентов
   scss(pathJ("src/components/common.scss"), pathJ(finalFolder));
   // Обработка картинок
-  img(pathJ("src/static/images/**/*"), pathJ(`${finalFolder}/static/images`));
+  img(pathJ("src/static/images"), pathJ(`${finalFolder}/static/images`));
   // Обработка шрифтов
-  fonts(pathJ("src/static/fonts/**/*"), pathJ(`${finalFolder}/static/fonts`));
+  fonts(pathJ("src/static/fonts"), pathJ(`${finalFolder}/static/fonts`));
 }
 
 // Функция которая слушает изменения файлов в проекте
