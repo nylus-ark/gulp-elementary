@@ -67,11 +67,13 @@ function js(src, dest) {
 }
 // Функция обработки шрифтов
 function fonts(src, dest) {
+  fs.mkdirSync(dest, {recursive: true});
   fs.copy(src, dest);
   // TODO: нужно сделать оптимизацию шрифтов
 }
 // Функция обработки картинок
 function img(src, dest) {
+  fs.mkdirSync(dest, {recursive: true});
   fs.copy(src, dest);
   // TODO: нужно сделать оптимизацию картинок
 }
