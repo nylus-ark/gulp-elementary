@@ -12,12 +12,8 @@ let gulp = require("gulp"),
 
 sass.compiler = require("node-sass"); // Переназначаем компилирование
 
-// Функция для корректной работы с путями
-function pathJ(value) {
-  return path.join(__dirname, value);
-}
-// Название папки с итоговым проектом
-const finalFolder = "dest";
+// Название build папки
+const finalFolder = "build";
 
 // Функция обработки html файлов
 function html(src, dest) {
@@ -26,7 +22,7 @@ function html(src, dest) {
     .pipe(
       fileinclude({
         prefix: "@@",
-        basepath: pathJ("src/components")
+        basepath: "./src/components"
       }).on("error", function(error) {
         console.error(error);
       })
@@ -83,19 +79,19 @@ function img(src, dest) {
 // Функция сборки проекта
 async function buildProject() {
   // Очистка папки "build"
-  await del([pathJ(`${finalFolder}/*`)]);
+  await del([`./${finalFolder}/*`]);
 
   // Обработка всех страниц (html, scss, js)
-  const arrayPages = fs.readdirSync(pathJ("src/pages"));
+  const arrayPages = fs.readdirSync("./src/pages");
   let pathBuild = "";
   for (let folder of arrayPages) {
     folder === "main"
-      ? (pathBuild = pathJ(`${finalFolder}`))
-      : (pathBuild = pathJ(`${finalFolder}/pages/${folder}`));
+      ? (pathBuild = `./${finalFolder}`)
+      : (pathBuild = `./${finalFolder}/pages/${folder}`);
 
-    const pathFolder = pathJ(`src/pages/${folder}`);
+    const pathFolder = `./src/pages/${folder}`;
     for (let file of fs.readdirSync(pathFolder)) {
-      const fileName = `${pathFolder}/${file}`;
+      const fileName = `./${pathFolder}/${file}`;
 
       switch (path.extname(fileName)) {
         case ".html":
@@ -112,22 +108,22 @@ async function buildProject() {
   }
 
   // Обработка стилей компонентов
-  scss(pathJ("src/components/common.scss"), pathJ(finalFolder));
+  scss("./src/components/common.scss", `./${finalFolder}`);
   // Обработка картинок
-  img(pathJ("src/static/images"), pathJ(`${finalFolder}/static/images`));
+  img("./src/static/images", `./${finalFolder}/static/images`);
   // Обработка шрифтов
-  fonts(pathJ("src/static/fonts"), pathJ(`${finalFolder}/static/fonts`));
+  fonts("./src/static/fonts", `./${finalFolder}/static/fonts`);
 }
 
 // Функция которая слушает изменения файлов в проекте
 function watch() {
   browserSync.init({
     server: {
-      baseDir: pathJ(finalFolder)
+      baseDir: `./${finalFolder}`
     }
   });
   // При изменении любого типа файлов пересобрать проект
-  gulp.watch(pathJ("src/**/*.*"), buildProject);
+  gulp.watch("./src/**/*.*", buildProject);
 }
 gulp.task("watch", watch);
 
