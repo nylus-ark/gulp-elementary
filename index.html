@@ -13,7 +13,17 @@
     <title>Главная</title>
   </head>
   <body>
-    @@include('header/index.html')
+    <header>
+  <div class="container">
+    <span class="title-block title-block_one">
+      Header
+    </span>
+    <a href="/">Главная</a>
+    <a href="/pages/catalog">Каталог</a>
+    <a href="/pages/toys">Игрушки</a>
+  </div>
+</header>
+
     <main class="index-main">
       <div class="container">
         <h1 class="title-block title-block_one">Главная</h1>
@@ -38,7 +48,15 @@
         </div>
       </div>
     </main>
-    @@include('footer/index.html')
+    <footer>
+  <div class="container">
+    <span class="title-block title-block_one">Footer</span>
+    <a href="/">Главная</a>
+    <a href="/pages/catalog">Каталог</a>
+    <a href="/pages/toys">Игрушки</a>
+  </div>
+</footer>
+
     <script src="scripts.js"></script>
   </body>
 </html>
